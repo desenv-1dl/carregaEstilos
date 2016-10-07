@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>157</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Carregar Estilos</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Selecione a conexão:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QComboBox" name="comboBox_2">
+     <item>
+      <property name="text">
+       <string>Selecione ...</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Selecione o tipo de estilos:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QComboBox" name="comboBox_3">
+     <item>
+      <property name="text">
+       <string>Selecione ...</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Estilo de Revisão</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Estilo de Aquisição</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Estilo de Reambulação</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>Carregar</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

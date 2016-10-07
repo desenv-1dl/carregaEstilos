@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/plugins/carregaEstilos" >
+     <file>style.png</file>
+  </qresource>
+</RCC>
+
