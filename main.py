@@ -64,6 +64,7 @@ class CarregaEstilos:
                 c=db+"/database"
                 d=db+'/username'
                 e=db+'/password' 
+                self.dataBase = s.value(c)
                 conn_string = "host="+s.value(a)+" dbname="+s.value(c)+" user="+s.value(d)+" password="+s.value(e)+" port="+s.value(b)
                 conn = psycopg2.connect(conn_string)
                 cursor = conn.cursor()
@@ -74,7 +75,7 @@ class CarregaEstilos:
                 QMessageBox.warning(self.iface.mainWindow(),u"ERRO", u"Conecte-se a um 'BANCO DE DADOS' e salve seu 'USUÁRIO' e sua 'SENHA' e coloque a 'MÁQUINA' que está seu banco de dados")
                 self.teste = "erro"
             if not self.teste == "erro":
-                tipos = { 1: 'revisao_', 2:'aquisicao_',3: 'reambulacao_', 4: 'vetorizacao_'}
+                tipos = { 1: u'revisao_', 2: u'aquisicao_',3: u'reambulacao_', 4: u'vetorizacao_'}
                 tipo = tipos[self.menu.comboBox_3.currentIndex()]					
                 self.carregarEstilos(tipo)
         else:
@@ -87,12 +88,14 @@ class CarregaEstilos:
         layers = QgsMapLayerRegistry.instance().mapLayers()
         grupo={}
         for x in range(len(layers)):
-            grupo[layers.keys()[x][:-17]]=layers.get(layers.keys()[x])
+            if self.dataBase == layers[layers.keys()[x]].dataProvider().dataSourceUri().split(' ')[0][8:-1]:
+                grupo[layers.keys()[x][:-17]]=layers.get(layers.keys()[x])
         for camada in grupo.keys():
             self.iface.setActiveLayer(grupo.get(camada))
             estilo_camada = tipo+self.iface.activeLayer().name()
             if estilo_camada in self.styles.keys():
                 x= self.iface.activeLayer().getStyleFromDatabase(str(self.styles.get(estilo_camada)), "Estilo não encontrado")
+                self.iface.activeLayer().applyNamedStyle(x)
         self.iface.mapCanvas().refreshAllLayers()
         self.MainWindow.close()
     
