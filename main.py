@@ -92,6 +92,7 @@ class CarregaEstilos:
                 grupo[layers.keys()[x][:-17]]=layers.get(layers.keys()[x])
         for camada in grupo.keys():
             self.iface.setActiveLayer(grupo.get(camada))
+            self.iface.activeLayer().loadDefaultStyle()
             estilo_camada = tipo+self.iface.activeLayer().name()
             if estilo_camada in self.styles.keys():
                 x= self.iface.activeLayer().getStyleFromDatabase(str(self.styles.get(estilo_camada)), "Estilo não encontrado")
